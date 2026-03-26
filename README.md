@@ -1,8 +1,8 @@
-# 💲 PrestaFácil - Sistema de Gestión de Préstamos
+# PrestaFácil - Sistema de Gestión de Préstamos
 
 Sistema web profesional para administrar préstamos en pesos colombianos (COP), tipo "gota a gota" legal.
 
-## 🚀 Inicio Rápido
+## Inicio Rápido
 
 ### Requisitos
 - Docker y Docker Compose instalados
@@ -26,7 +26,7 @@ docker-compose up --build
 
 ---
 
-## 🧱 Stack Tecnológico
+## Stack Tecnológico
 
 | Componente | Tecnología |
 |------------|-----------|
@@ -38,7 +38,7 @@ docker-compose up --build
 
 ---
 
-## 📁 Estructura del Proyecto
+## Estructura del Proyecto
 
 ```
 ├── backend/
@@ -73,7 +73,7 @@ docker-compose up --build
 
 ---
 
-## 🔌 Endpoints Principales
+## Endpoints Principales
 
 ### Autenticación
 | Método | Endpoint | Descripción |
@@ -111,7 +111,7 @@ docker-compose up --build
 
 ---
 
-## 🔐 Roles
+## Roles
 
 | Rol | Permisos |
 |-----|----------|
@@ -120,7 +120,7 @@ docker-compose up --build
 
 ---
 
-## 💡 Lógica de Préstamos
+## Lógica de Préstamos
 
 Al crear un préstamo:
 1. Se calcula el interés sobre el monto
@@ -131,7 +131,7 @@ Al crear un préstamo:
 
 ---
 
-## ⚙️ Variables de Entorno (.env)
+## Variables de Entorno (.env)
 
 ```env
 MYSQL_DATABASE=prestamos_db
@@ -143,5 +143,5 @@ ADMIN_USERNAME=admin
 ADMIN_PASSWORD=admin123
 ```
 
-> ⚠️ Cambia `SECRET_KEY` y las contraseñas antes de desplegar en producción.
+> Cambia `SECRET_KEY` y las contraseñas antes de desplegar en producción.
 "# PrestaFacil" 
