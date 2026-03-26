@@ -1,24 +1,4 @@
 services:
-  # MySQL Private Service
-  - type: pserv
-    name: db
-    env: image
-    image:
-      url: mysql:8.0
-    disk:
-      name: mysql_data
-      mountPath: /var/lib/mysql
-      sizeGB: 1
-    envVars:
-      - key: MYSQL_ROOT_PASSWORD
-        generateValue: true
-      - key: MYSQL_DATABASE
-        value: prestamos_db
-      - key: MYSQL_USER
-        value: prestamos_user
-      - key: MYSQL_PASSWORD
-        generateValue: true
-
   # FASTAPI Web Service
   - type: web
     name: api
@@ -27,7 +7,7 @@ services:
     dockerfilePath: Dockerfile
     envVars:
       - key: DATABASE_URL
-        value: mysql+pymysql://prestamos_user:${MYSQL_PASSWORD}@db:3306/prestamos_db
+        sync: false
       - key: SECRET_KEY
         generateValue: true
       - key: ADMIN_USERNAME
