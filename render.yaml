@@ -2,9 +2,9 @@ services:
   # MySQL Private Service
   - type: pserv
     name: db
-    env: docker
+    env: image
     image:
-      imagePath: mysql:8.0
+      url: mysql:8.0
     disk:
       name: mysql_data
       mountPath: /var/lib/mysql
