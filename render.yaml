@@ -1,0 +1,50 @@
+services:
+  # MySQL Private Service
+  - type: pserv
+    name: db
+    env: docker
+    image:
+      imagePath: mysql:8.0
+    disk:
+      name: mysql_data
+      mountPath: /var/lib/mysql
+      sizeGB: 1
+    envVars:
+      - key: MYSQL_ROOT_PASSWORD
+        generateValue: true
+      - key: MYSQL_DATABASE
+        value: prestamos_db
+      - key: MYSQL_USER
+        value: prestamos_user
+      - key: MYSQL_PASSWORD
+        generateValue: true
+
+  # FASTAPI Web Service
+  - type: web
+    name: api
+    env: docker
+    rootDir: backend
+    dockerfilePath: Dockerfile
+    envVars:
+      - key: DATABASE_URL
+        value: mysql+pymysql://prestamos_user:${MYSQL_PASSWORD}@db:3306/prestamos_db
+      - key: SECRET_KEY
+        generateValue: true
+      - key: ADMIN_USERNAME
+        value: admin
+      - key: ADMIN_PASSWORD
+        value: admin123
+        
+  # REACT Static Site
+  - type: web
+    name: frontend
+    env: static
+    rootDir: frontend
+    buildCommand: npm install && npm run build
+    staticPublishPath: ./dist
+    envVars:
+      - key: VITE_API_URL
+        fromService:
+          type: web
+          name: api
+          envVarKey: RENDER_EXTERNAL_URL
